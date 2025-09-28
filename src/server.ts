@@ -1,6 +1,7 @@
 import { Server } from "http";
 import { prisma } from "./app/config/db";
 import app from "./app";
+import { seedAdmin } from "./app/utils/seedAdmin";
 
 let server: Server;
 
@@ -56,7 +57,11 @@ const gracefulShutdown = async (reason: string, error?: unknown) => {
 };
 
 // Start app
-startServer();
+// startServer();
+(async () => {
+    await startServer();
+    await seedAdmin();
+})()
 
 // Register shutdown signals
 process.on("SIGINT", () => gracefulShutdown("SIGINT"));
