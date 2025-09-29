@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 export const seedAdmin = async () => {
     try {
         const password = envVars.ADMIN_PASSWORD;
-        console.log('password a==>',password);
+        // console.log('password a==>',password);
         const hash = await bcrypt.hash(password, Number(envVars.BCRYPT_SALT_ROUND));
 
         const existing = await prisma.user.findUnique({

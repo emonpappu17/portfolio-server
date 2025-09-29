@@ -8,7 +8,7 @@ import { UserService } from "./user.service";
 
 const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const decodedToken = req.user as JwtPayload;
-    console.log('decodedToken==>', decodedToken);
+    // console.log('decodedToken==>', decodedToken);
     const result = await UserService.getMe(decodedToken.id);
 
     // res.status(httpStatus.OK).json({
