@@ -14,7 +14,7 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "User Logged In Successfully",
+        message: "Admin Logged In Successfully",
         data: {
             accessToken: loginInfo.accessToken,
             user: loginInfo.user
@@ -22,6 +22,25 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
     })
 })
 
+const logout = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+
+    res.clearCookie("accessToken", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none"
+    })
+
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Admin Logged Out Successfully",
+        data: null
+    })
+})
+
+
 export const AuthController = {
-    login
+    login,
+    logout
 }

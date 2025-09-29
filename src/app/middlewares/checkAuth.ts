@@ -10,9 +10,13 @@ export const checkAuth = (...authRoles: string[]) => async (req: Request, res: R
     try {
         const accessToken = req.headers.authorization || req.cookies.accessToken;
 
+        // console.log('accessToken==>', accessToken);
+
         if (!accessToken) throw new AppError(403, "No Token Received");
 
         const verifiedToken = verifyToken(accessToken, envVars.JWT_ACCESS_SECRET) as JwtPayload;
+
+        // console.log("verifiedToken=>", verifiedToken);
 
 
         const user = await prisma.user.findUnique({
@@ -21,10 +25,12 @@ export const checkAuth = (...authRoles: string[]) => async (req: Request, res: R
             }
         })
 
+        // console.log(user);
+
         if (!user) {
             throw new AppError(httpStatus.BAD_REQUEST, "Admin doest not exist")
         }
-        
+
         req.user = verifiedToken;
 
         next()
