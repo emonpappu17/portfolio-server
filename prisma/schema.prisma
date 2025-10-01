@@ -21,6 +21,20 @@ model User {
   role     Role    @default(ADMIN)
   image    String?
 
+  blogs     Blog[]
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+}
+
+model Blog {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  thumbnail String
+  slug      String   @unique
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  tags      String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
