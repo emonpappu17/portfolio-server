@@ -28,7 +28,7 @@ model User {
 
 model Blog {
   id        String   @id @default(cuid())
-  title     String
+  title     String   @unique
   content   String
   thumbnail String
   slug      String   @unique
