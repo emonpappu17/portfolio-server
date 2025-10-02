@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { BlogController } from "./blog.controller";
+import { checkAuth } from "../../middlewares/checkAuth";
 
 const router = Router();
 
-router.post("/create", BlogController.createBlog)
+router.get("/all", BlogController.getAllBlog);
+router.post("/create", checkAuth("ADMIN"), BlogController.createBlog);
 
 
 export const BlogRoutes = router
