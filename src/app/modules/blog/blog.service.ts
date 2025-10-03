@@ -5,7 +5,7 @@ import httpStatus from "http-status-codes"
 
 const getAllBlog = async ({
     page = 1,
-    limit = 10,
+    limit = 20,
     search,
     // isFeatured,
     tags
@@ -19,7 +19,7 @@ const getAllBlog = async ({
     const skip = (page - 1) * limit;
     // console.log(search);
     // console.log({ isFeatured });
-    console.log(tags);
+    // console.log(tags);
 
     const where: any = {
         AND: [
@@ -107,7 +107,44 @@ const createBlog = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
     return result;
 }
 
+const getBySlug = async (slug: string) => {
+    // const blog = await prisma.blog.findUnique({
+    //     where: {
+    //         slug: slug
+    //     }
+    // })
+
+    // if (!blog) throw new AppError(httpStatus.NOT_FOUND, "BLog not found")
+
+    // return blog
+
+    const result = await prisma.$transaction(async (tran) => {
+        await tran.blog.update({
+            where: { slug: slug },
+            data: {
+                views: {
+                    increment: 1
+                }
+            }
+        })
+
+        return await tran.blog.findUnique({
+            where: { slug: slug },
+            include: {
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            },
+        })
+    })
+
+    return result;
+}
+
 export const BlogService = {
     createBlog,
-    getAllBlog
+    getAllBlog,
+    getBySlug
 }
