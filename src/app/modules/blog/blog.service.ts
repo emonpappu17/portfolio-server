@@ -108,16 +108,6 @@ const createBlog = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
 }
 
 const getBySlug = async (slug: string) => {
-    // const blog = await prisma.blog.findUnique({
-    //     where: {
-    //         slug: slug
-    //     }
-    // })
-
-    // if (!blog) throw new AppError(httpStatus.NOT_FOUND, "BLog not found")
-
-    // return blog
-
     const result = await prisma.$transaction(async (tran) => {
         await tran.blog.update({
             where: { slug: slug },
@@ -143,8 +133,26 @@ const getBySlug = async (slug: string) => {
     return result;
 }
 
+const deleteBlog = async (id: string) => {
+    const blog = await prisma.blog.findUnique({
+        where: {
+            id: id
+        }
+    })
+    if (!blog) throw new AppError(httpStatus.NOT_FOUND, "Blog not found")
+
+    const result = await prisma.blog.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return { id: result.id };
+}
+
 export const BlogService = {
     createBlog,
     getAllBlog,
-    getBySlug
+    getBySlug,
+    deleteBlog
 }

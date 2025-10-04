@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { BlogController } from "./blog.controller";
 import { checkAuth } from "../../middlewares/checkAuth";
+import { validateRequest } from "../../middlewares/validateRequest";
+import { blogSchema } from "./blog.validation";
 
 const router = Router();
 
-router.get("/all", BlogController.getAllBlog);
+router.get("/", BlogController.getAllBlog);
 router.get("/:slug", BlogController.getBySlug);
-
-
-router.post("/create", checkAuth("ADMIN"), BlogController.createBlog);
+router.delete("/:id", checkAuth("ADMIN"), BlogController.deleteBlog);
+router.post("/", checkAuth("ADMIN"), validateRequest(blogSchema), BlogController.createBlog);
 
 
 export const BlogRoutes = router

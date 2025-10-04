@@ -12,7 +12,7 @@ const getAllBlog = catchAsync(async (req: Request, res: Response, next: NextFunc
 
     // console.log(tags);
 
-    console.log('getAllBlog hit');
+    // console.log('getAllBlog hit');
 
     const result = await BlogService.getAllBlog({ page, limit, search, tags });
 
@@ -38,7 +38,7 @@ const createBlog = catchAsync(async (req: Request, res: Response, next: NextFunc
 
 const getBySlug = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log('sjkhsjkdfh');
+    // console.log('sjkhsjkdfh');
 
     const result = await BlogService.getBySlug(req.params.slug);
 
@@ -50,9 +50,24 @@ const getBySlug = catchAsync(async (req: Request, res: Response, next: NextFunct
     })
 })
 
+const deleteBlog = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+
+    // console.log('sjkhsjkdfh');
+
+    const result = await BlogService.deleteBlog(req.params.id);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Blog deleted successfully",
+        data: result
+    })
+})
+
 
 export const BlogController = {
     createBlog,
     getAllBlog,
-    getBySlug
+    getBySlug,
+    deleteBlog
 }
