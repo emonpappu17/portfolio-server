@@ -150,9 +150,31 @@ const deleteBlog = async (id: string) => {
     return { id: result.id };
 }
 
+
+const updateBlog = async (slug: string, payload: Prisma.BlogUpdateInput): Promise<Blog> => {
+    const blog = await prisma.blog.findUnique({
+        where: {
+            slug: slug
+        }
+    })
+    if (!blog) throw new AppError(httpStatus.NOT_FOUND, "Blog not found")
+    const baseSlug = (payload.title as string).toLocaleLowerCase().split(" ").join("-")
+    payload.slug = `${baseSlug}`
+    const result = await prisma.blog.update({
+        where: {
+            slug: slug
+        },
+        data: payload
+    })
+
+
+    return result
+}
+
 export const BlogService = {
     createBlog,
     getAllBlog,
     getBySlug,
-    deleteBlog
+    deleteBlog,
+    updateBlog
 }
