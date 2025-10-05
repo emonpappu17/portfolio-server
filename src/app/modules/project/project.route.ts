@@ -1,18 +1,17 @@
 import { Router } from "express";
-// import { BlogController } from "./blog.controller";
+import { ProjectController } from "./project.controller";
 import { checkAuth } from "../../middlewares/checkAuth";
-import { validateRequest } from "../../middlewares/validateRequest";
-// import { blogSchema } from "./blog.validation";
+
 
 const router = Router();
 
+//public
 router.get("/", ProjectController.getAllProjects);
 router.get("/:id", ProjectController.getSingleProject);
 
+//owner 
+router.post("/", checkAuth("ADMIN"), ProjectController.createProject);
+router.patch("/:id", checkAuth("ADMIN"), ProjectController.updateProject);
+router.delete("/:id", checkAuth("ADMIN"), ProjectController.deleteProject);
 
-// router.delete("/:id", checkAuth("ADMIN"), ProjectController.deleteBlog);
-// router.patch("/:slug", checkAuth("ADMIN"), ProjectController.updateBlog);
-// router.post("/", checkAuth("ADMIN"), validateRequest(blogSchema), ProjectController.createBlog);
-
-
-export const ProjectRoutes = router
+export const ProjectRoutes = router;
