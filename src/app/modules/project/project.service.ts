@@ -1,5 +1,6 @@
 import { Project } from "@prisma/client";
 import { prisma } from "../../config/db";
+import AppError from "../../errorHelpers/AppError";
 
 // Owner
 const createProject = async (payload: Project): Promise<Project | null> => {
@@ -34,9 +35,12 @@ const getAllProjects = async (): Promise<Project[] | null> => {
 }
 
 const getSingleProject = async (id: string): Promise<Project | null> => {
+    // console.log('id from service', id);
     const result = await prisma.project.findUnique({
         where: { id }
     })
+    if (!result) throw new AppError(404, "Project not found")
+
     return result;
 }
 

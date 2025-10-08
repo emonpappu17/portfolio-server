@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
+import httpStatus from 'http-status-codes';
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
-import httpStatus from 'http-status-codes';
 import { ProjectService } from "./project.service";
-import { de } from "zod/v4/locales";
 
 
 
@@ -58,7 +57,7 @@ const getAllProjects = catchAsync(async (req: Request, res: Response, next: Next
 })
 
 const getSingleProject = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-
+    // console.log(req.params.id);
     const result = await ProjectService.getSingleProject(req.params.id);
 
     sendResponse(res, {
