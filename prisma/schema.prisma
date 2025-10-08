@@ -56,7 +56,7 @@ model Project {
 }
 
 model About {
-  id        String   @id @default(cuid())
+  id        String   @id @default("SINGLETON_ID")
   fullName  String
   title     String
   bio       String

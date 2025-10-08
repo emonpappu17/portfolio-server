@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "public"."About" ALTER COLUMN "id" SET DEFAULT 'SINGLETON_ID';
