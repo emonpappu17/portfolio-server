@@ -11,7 +11,10 @@ const createProject = async (payload: Project): Promise<Project | null> => {
 }
 
 const updateProject = async (id: string, payload: Project): Promise<Project | null> => {
-    const result = await prisma.project.create({
+    const result = await prisma.project.update({
+        where: {
+            id
+        },
         data: payload
     });
     return result
