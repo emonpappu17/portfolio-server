@@ -1,4 +1,5 @@
 import { prisma } from "../../config/db"
+import AppError from "../../errorHelpers/AppError"
 
 const getMe = async (id: string) => {
 
@@ -10,7 +11,13 @@ const getMe = async (id: string) => {
         //     password
         // }
     })
-    return user
+    // return user
+
+    if (!user) throw new AppError(404, "user not found")
+
+    // remove password 
+    const { password, ...safeUser } = user
+    return safeUser
 }
 
 export const UserService = {

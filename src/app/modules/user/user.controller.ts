@@ -11,11 +11,6 @@ const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction)
     // console.log('decodedToken==>', decodedToken);
     const result = await UserService.getMe(decodedToken.id);
 
-    // res.status(httpStatus.OK).json({
-    //     message: "All Users Retrieved Successfully",
-    //     data: users
-    // })
-
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,

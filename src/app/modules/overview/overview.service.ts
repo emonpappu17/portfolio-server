@@ -1,7 +1,7 @@
 import { prisma } from "../../config/db"
 
 const getOverview = async () => {
-    const [totalBlogs, totalProjects, totalViews, recentBlogs, recentProjects, about] =
+    const [totalBlogs, totalProjects, totalViews, recentBlogs, recentProjects] =
         await Promise.all([
             prisma.blog.count(),
             prisma.project.count(),
@@ -10,7 +10,7 @@ const getOverview = async () => {
             }),
             prisma.blog.findMany({
                 orderBy: { createdAt: "desc" },
-                take: 3,
+                take: 4,
                 select: {
                     id: true,
                     title: true,
@@ -21,22 +21,13 @@ const getOverview = async () => {
             }),
             prisma.project.findMany({
                 orderBy: { createdAt: "desc" },
-                take: 3,
+                take: 4,
                 select: {
                     id: true,
                     title: true,
                     thumbnail: true,
                     live_link: true,
                     createdAt: true,
-                },
-            }),
-            prisma.about.findUnique({
-                where: { id: "SINGLETON_ID" },
-                select: {
-                    fullName: true,
-                    title: true,
-                    image: true,
-                    bio: true,
                 },
             }),
         ]);
@@ -47,7 +38,7 @@ const getOverview = async () => {
         totalViews: totalViews._sum.views || 0,
         recentBlogs,
         recentProjects,
-        about,
+        // about,
     };
 }
 
