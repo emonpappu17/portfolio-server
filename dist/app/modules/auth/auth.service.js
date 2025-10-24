@@ -24,16 +24,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
-const db_1 = require("../../config/db");
-const AppError_1 = __importDefault(require("../../errorHelpers/AppError"));
-const http_status_codes_1 = __importDefault(require("http-status-codes"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const jwt_1 = require("../../utils/jwt");
+const http_status_codes_1 = __importDefault(require("http-status-codes"));
+const db_1 = require("../../config/db");
 const env_1 = require("../../config/env");
+const AppError_1 = __importDefault(require("../../errorHelpers/AppError"));
+const jwt_1 = require("../../utils/jwt");
 const login = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, password }) {
     const user = yield db_1.prisma.user.findUnique({ where: { email } });
     if (!user) {
-        throw new AppError_1.default(http_status_codes_1.default.NOT_FOUND, "Admin not found");
+        throw new AppError_1.default(http_status_codes_1.default.NOT_FOUND, "Owner not found");
     }
     const isPasswordMatched = yield bcryptjs_1.default.compare(password, user.password);
     if (!isPasswordMatched) {
@@ -42,7 +42,7 @@ const login = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, passwo
     const jwtPayload = {
         id: user.id,
         email: user.email,
-        role: user.role
+        // role: user.role
     };
     const accessToken = (0, jwt_1.generateToken)(jwtPayload, env_1.envVars.JWT_ACCESS_SECRET, env_1.envVars.JWT_ACCESS_EXPIRES);
     // Exclude password

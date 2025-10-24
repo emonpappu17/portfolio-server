@@ -18,7 +18,7 @@ const AppError_1 = __importDefault(require("../errorHelpers/AppError"));
 const db_1 = require("../config/db");
 const jwt_1 = require("../utils/jwt");
 const env_1 = require("../config/env");
-const checkAuth = (...authRoles) => (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const checkAuth = () => (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // console.log("req ===>",req.cookies);
         const accessToken = req.headers.authorization || req.cookies.accessToken;
@@ -34,7 +34,7 @@ const checkAuth = (...authRoles) => (req, res, next) => __awaiter(void 0, void 0
         });
         // console.log(user);
         if (!user) {
-            throw new AppError_1.default(http_status_codes_1.default.BAD_REQUEST, "Admin doest not exist");
+            throw new AppError_1.default(http_status_codes_1.default.BAD_REQUEST, "Owner doest not exist");
         }
         req.user = verifiedToken;
         next();

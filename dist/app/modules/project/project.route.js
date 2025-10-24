@@ -9,7 +9,7 @@ const router = (0, express_1.Router)();
 router.get("/", project_controller_1.ProjectController.getAllProjects);
 router.get("/:id", project_controller_1.ProjectController.getSingleProject);
 //owner 
-router.post("/", (0, checkAuth_1.checkAuth)("ADMIN"), project_controller_1.ProjectController.createProject);
-router.patch("/:id", (0, checkAuth_1.checkAuth)("ADMIN"), project_controller_1.ProjectController.updateProject);
-router.delete("/:id", (0, checkAuth_1.checkAuth)("ADMIN"), project_controller_1.ProjectController.deleteProject);
+router.post("/", (0, checkAuth_1.checkAuth)(), project_controller_1.ProjectController.createProject);
+router.patch("/:id", (0, checkAuth_1.checkAuth)(), project_controller_1.ProjectController.updateProject);
+router.delete("/:id", (0, checkAuth_1.checkAuth)(), project_controller_1.ProjectController.deleteProject);
 exports.ProjectRoutes = router;

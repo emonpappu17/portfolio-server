@@ -10,9 +10,9 @@ router.get("/", BlogController.getAllBlog);
 router.get("/:slug", BlogController.getBySlug);
 
 
-router.delete("/:id", checkAuth("ADMIN"), BlogController.deleteBlog);
-router.patch("/:slug", checkAuth("ADMIN"), BlogController.updateBlog);
-router.post("/", checkAuth("ADMIN"), validateRequest(blogSchema), BlogController.createBlog);
+router.delete("/:id", checkAuth(), BlogController.deleteBlog);
+router.patch("/:slug", checkAuth(), BlogController.updateBlog);
+router.post("/", checkAuth(), validateRequest(blogSchema), BlogController.createBlog);
 
 
 export const BlogRoutes = router

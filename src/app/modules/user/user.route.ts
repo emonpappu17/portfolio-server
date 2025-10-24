@@ -4,6 +4,6 @@ import { UserController } from "./user.controller";
 
 const router = Router();
 
-router.get('/me', checkAuth("ADMIN"), UserController.getMe)
+router.get('/me', checkAuth(), UserController.getMe)
 
 export const UserRoutes = router;

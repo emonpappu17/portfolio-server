@@ -10,8 +10,8 @@ router.get("/", ProjectController.getAllProjects);
 router.get("/:id", ProjectController.getSingleProject);
 
 //owner 
-router.post("/", checkAuth("ADMIN"), ProjectController.createProject);
-router.patch("/:id", checkAuth("ADMIN"), ProjectController.updateProject);
-router.delete("/:id", checkAuth("ADMIN"), ProjectController.deleteProject);
+router.post("/", checkAuth(), ProjectController.createProject);
+router.patch("/:id", checkAuth(), ProjectController.updateProject);
+router.delete("/:id", checkAuth(), ProjectController.deleteProject);
 
 export const ProjectRoutes = router;

@@ -4,6 +4,6 @@ import { checkAuth } from "../../middlewares/checkAuth";
 
 const router = Router();
 
-router.get("/", checkAuth("ADMIN"), OverviewController.getOverview)
+router.get("/", checkAuth(), OverviewController.getOverview)
 
 export const OverviewRoutes = router;

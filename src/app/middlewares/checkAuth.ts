@@ -6,7 +6,7 @@ import { prisma } from "../config/db";
 import { verifyToken } from "../utils/jwt";
 import { envVars } from "../config/env";
 
-export const checkAuth = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+export const checkAuth = () => async (req: Request, res: Response, next: NextFunction) => {
     try {
         // console.log("req ===>",req.cookies);
         const accessToken = req.headers.authorization || req.cookies.accessToken;
@@ -29,7 +29,7 @@ export const checkAuth = (...authRoles: string[]) => async (req: Request, res: R
         // console.log(user);
 
         if (!user) {
-            throw new AppError(httpStatus.BAD_REQUEST, "Admin doest not exist")
+            throw new AppError(httpStatus.BAD_REQUEST, "Owner doest not exist")
         }
 
         req.user = verifiedToken;

@@ -1,16 +1,15 @@
-import { prisma } from "../../config/db";
-import AppError from "../../errorHelpers/AppError";
-import httpStatus from "http-status-codes"
 import bcryptjs from 'bcryptjs';
-import { Role } from "@prisma/client";
-import { generateToken } from "../../utils/jwt";
+import httpStatus from "http-status-codes";
+import { prisma } from "../../config/db";
 import { envVars } from "../../config/env";
+import AppError from "../../errorHelpers/AppError";
+import { generateToken } from "../../utils/jwt";
 
 const login = async ({ email, password }: { email: string, password: string }) => {
     const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
-        throw new AppError(httpStatus.NOT_FOUND, "Admin not found");
+        throw new AppError(httpStatus.NOT_FOUND, "Owner not found");
     }
 
     const isPasswordMatched = await bcryptjs.compare(password as string, user.password as string)
@@ -22,7 +21,7 @@ const login = async ({ email, password }: { email: string, password: string }) =
     const jwtPayload = {
         id: user.id,
         email: user.email,
-        role: user.role
+        // role: user.role
     }
 
     const accessToken = generateToken(jwtPayload, envVars.JWT_ACCESS_SECRET, envVars.JWT_ACCESS_EXPIRES)

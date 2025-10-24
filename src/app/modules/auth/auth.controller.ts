@@ -14,7 +14,7 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Admin Logged In Successfully",
+        message: "Owner Logged In Successfully",
         data: {
             accessToken: loginInfo.accessToken,
             user: loginInfo.user
@@ -34,7 +34,7 @@ const logout = catchAsync(async (req: Request, res: Response, next: NextFunction
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Admin Logged Out Successfully",
+        message: "Owner Logged Out Successfully",
         data: null
     })
 })

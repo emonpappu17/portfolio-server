@@ -24,7 +24,7 @@ const login = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0,
     (0, sendResponse_1.sendResponse)(res, {
         success: true,
         statusCode: http_status_codes_1.default.OK,
-        message: "Admin Logged In Successfully",
+        message: "Owner Logged In Successfully",
         data: {
             accessToken: loginInfo.accessToken,
             user: loginInfo.user
@@ -40,7 +40,7 @@ const logout = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0
     (0, sendResponse_1.sendResponse)(res, {
         success: true,
         statusCode: http_status_codes_1.default.OK,
-        message: "Admin Logged Out Successfully",
+        message: "Owner Logged Out Successfully",
         data: null
     });
 }));
