@@ -18,7 +18,7 @@ app.use(cors({
 app.use("/api", router);
 
 app.get("/", (req, res) => {
-    res.json('Well come to Nextfolio server')
+    res.json('Well come to portfolio server')
 })
 
 app.use(globalErrorHandler)

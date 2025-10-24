@@ -31,7 +31,7 @@ const deleteProject = async (id: string): Promise<Project | null> => {
 const getAllProjects = async (): Promise<Project[] | null> => {
     const result = await prisma.project.findMany({
         orderBy: {
-            createdAt: "asc"
+            createdAt: "desc"
         }
     });
     return result

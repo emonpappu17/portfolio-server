@@ -56,18 +56,23 @@ model Project {
 }
 
 model About {
-  id        String   @id @default("SINGLETON_ID")
+  id        String  @id @default("SINGLETON_ID")
   fullName  String
   title     String
   bio       String
   image     String
-  skills    String[]
   whatILove String?
   email     String
   phone     String
   location  String
   github    String
   linkedin  String
+
+  skills String[]
+
+  education   Json?
+  experiences Json?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
