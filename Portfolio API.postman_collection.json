@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "aa2b5a99-441e-4a6a-9355-eceebddab6d2",
+		"name": "Portfolio API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43592956",
+		"_collection_link": "https://emon-9646668.postman.co/workspace/emon's-Workspace~46220dae-5a5d-4fa9-8705-cf82eed49d8d/collection/43592956-aa2b5a99-441e-4a6a-9355-eceebddab6d2?action=share&source=collection_link&creator=43592956"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"emonbafsd@gmail.com\",\r\n    \"password\": \"asdfQ123@\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"emonbafsd@gmail.com\",\r\n    \"password\": \"asdfQ123@\"\r\n  \r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTkxNDI5ODEsImV4cCI6MTc1OTIyOTM4MX0.3WqA-RN83YxDaxKg1IafGE1IBevRgM4hCrNgi9glmAc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"emonbafsd@gmail.com\",\r\n    \"password\": \"asdfQ123@\"\r\n  \r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/user/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTkxNDI5ODEsImV4cCI6MTc1OTIyOTM4MX0.3WqA-RN83YxDaxKg1IafGE1IBevRgM4hCrNgi9glmAc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Getting Started with React 4\",\r\n    \"content\": \"<p>sdfasdf</p>\",\r\n    \"thumbnail\": \"https://teamraft.com/wp-content/uploads/nextjs.jpg\",\r\n    \"tags\": [\r\n        \"Next.js\",\r\n        \"React\",\r\n        \"Web Development\"\r\n    ],\r\n    \"authorId\": \"cmg4k5lvq0000u2j4ziohsyds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/blog/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"blog",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all blogs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTkxNDI5ODEsImV4cCI6MTc1OTIyOTM4MX0.3WqA-RN83YxDaxKg1IafGE1IBevRgM4hCrNgi9glmAc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Getting Started with React 2\",\r\n    \"content\": \"<p>sdfasdf</p>\",\r\n    \"thumbnail\": \"https://teamraft.com/wp-content/uploads/nextjs.jpg\",\r\n    \"tags\": [\r\n        \"Next.js\",\r\n        \"React\",\r\n        \"Web Development\"\r\n    ],\r\n    \"authorId\": \"cmg4k5lvq0000u2j4ziohsyds\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/blog/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"blog",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "this",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTkxNDI5ODEsImV4cCI6MTc1OTIyOTM4MX0.3WqA-RN83YxDaxKg1IafGE1IBevRgM4hCrNgi9glmAc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Getting Started with React 2\",\r\n    \"content\": \"<p>sdfasdf</p>\",\r\n    \"thumbnail\": \"https://teamraft.com/wp-content/uploads/nextjs.jpg\",\r\n    \"tags\": [\r\n        \"Next.js\",\r\n        \"React\",\r\n        \"Web Development\"\r\n    ],\r\n    \"authorId\": \"cmg4k5lvq0000u2j4ziohsyds\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/blog/testing-testing",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"blog",
+								"testing-testing"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "this",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete blog",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "create project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTk2MzEwNTksImV4cCI6MTc1OTcxNzQ1OX0.qaxUqdnvnJTbWJO8SZIOE-tlIUlDpxhAZmyaQXA9k1c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"thumbnail\": \"https://i.ibb.co.com/FhKjhJW/saas-dashboard.png\",\r\n    \"title\": \"SaaS Dashboard Platform\",\r\n    \"description\": \"A modern SaaS analytics dashboard with real-time data visualization, subscription management, and user authentication.\",\r\n    \"features\": [\r\n        \"Dynamic dashboard with charts and metrics\",\r\n        \"JWT authentication & role-based access\",\r\n        \"Responsive UI with Tailwind CSS and Shadcn UI\",\r\n        \"Integrated Stripe payments for subscription plans\"\r\n    ],\r\n    \"technologies\": [\r\n        \"Next.js\",\r\n        \"TypeScript\",\r\n        \"Prisma\",\r\n        \"PostgreSQL\",\r\n        \"Tailwind CSS\",\r\n        \"Chart.js\"\r\n    ],\r\n    \"live_link\": \"https://saas-dashboard-demo.vercel.app\",\r\n    \"githubClient\": \"https://github.com/emonpappu/saas-dashboard-client\",\r\n    \"githubBackend\": \"https://github.com/emonpappu/saas-dashboard-api\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/project",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTk2MzEwNTksImV4cCI6MTc1OTcxNzQ1OX0.qaxUqdnvnJTbWJO8SZIOE-tlIUlDpxhAZmyaQXA9k1c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"thumbnail\": \"https://i.ibb.co.com/FhKjhJW/saas-dashboard.png\",\r\n    \"title\": \"SaaS Dashboard Platform\",\r\n    \"description\": \"A modern SaaS analytics dashboard with real-time data visualization, subscription management, and user authentication.\",\r\n    \"features\": [\r\n        \"Dynamic dashboard with charts and metrics\",\r\n        \"JWT authentication & role-based access\",\r\n        \"Responsive UI with Tailwind CSS and Shadcn UI\",\r\n        \"Integrated Stripe payments for subscription plans\"\r\n    ],\r\n    \"technologies\": [\r\n        \"Next.js\",\r\n        \"TypeScript\",\r\n        \"Prisma\",\r\n        \"PostgreSQL\",\r\n        \"Tailwind CSS\",\r\n        \"Chart.js\"\r\n    ],\r\n    \"live_link\": \"https://saas-dashboard-demo.vercel.app\",\r\n    \"githubClient\": \"https://github.com/emonpappu/saas-dashboard-client\",\r\n    \"githubBackend\": \"https://github.com/emonpappu/saas-dashboard-api\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/project",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single project",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "About",
+			"item": [
+				{
+					"name": "upset about",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZzRrNWx2cTAwMDB1Mmo0emlvaHN5ZHMiLCJlbWFpbCI6ImVtb25iYWZzZEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTk2MzEwNTksImV4cCI6MTc1OTcxNzQ1OX0.qaxUqdnvnJTbWJO8SZIOE-tlIUlDpxhAZmyaQXA9k1c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Emon Howlader\",\r\n    \"title\": \"Full-Stack Web Developer\",\r\n    \"bio\": \"I am a passionate full-stack developer who loves creating modern, scalable, and user-friendly web applications.\",\r\n    \"image\": \"https://i.ibb.co/wNWNGVz1/1737897219247.jpg\",\r\n    \"skills\": [\r\n        \"TypeScript\",\r\n        \"JavaScript\",\r\n        \"React\",\r\n        \"Next.js\",\r\n        \"Tailwind CSS\",\r\n        \"Node.js\",\r\n        \"Express\",\r\n        \"MongoDB\",\r\n        \"PostgreSQL\",\r\n        \"Prisma\",\r\n        \"Mongoose\",\r\n        \"Redux\",\r\n        \"Firebase\",\r\n        \"Docker\",\r\n        \"Git\",\r\n        \"GitHub\",\r\n        \"Shadcn UI\",\r\n        \"Figma\"\r\n    ],\r\n    //   \"whatILove\": \"I love building responsive web apps, dashboards, and interactive portfolio sites.\",\r\n    \"email\": \"emonbafsd@gmail.com\",\r\n    \"phone\": \"+8801648383606\",\r\n    \"location\": \"Dhaka, Bangladesh\",\r\n    \"github\": \"https://github.com/emonpappu17\",\r\n    \"linkedin\": \"https://www.linkedin.com/in/emonhowlader17/\",\r\n    \"education\": [\r\n        {\r\n            \"degree\": \"B.A. (Hons) in Political Science\",\r\n            \"institution\": \"Government Titumir College, Dhaka\",\r\n            \"startYear\": 2024,\r\n            \"endYear\": 2028\r\n            // \"description\": \"Focusing on political theory, public administration, and governance systems.\"\r\n        },\r\n        {\r\n            \"degree\": \"Higher Secondary Certificate (HSC) – Arts\",\r\n            \"institution\": \"BAF Shaheen College, Dhaka\",\r\n            \"gpa\": \"4.33 / 5.00\",\r\n            \"endYear\": 2023\r\n            // \"description\": \"Completed higher secondary education with focus on humanities and social studies.\"\r\n        },\r\n        {\r\n            \"degree\": \"Secondary School Certificate (SSC) – Arts\",\r\n            \"institution\": \"BAF Shaheen College, Dhaka\",\r\n            \"gpa\": \"4.39 / 5.00\",\r\n            \"endYear\": 2021\r\n            // \"description\": \"Completed secondary education with emphasis on literature, history, and social sciences.\"\r\n        }\r\n    ],\r\n    \"experiences\": [\r\n        {\r\n            \"title\": \"Self-Taught Web Development Journey\",\r\n            \"organization\": \"Independent Learning & Projects\",\r\n            \"startYear\": 2024,\r\n            \"endYear\": null,\r\n            \"description\": \"Developed multiple full-stack web applications using React, Next.js, Node.js, and Prisma. Focused on creating real-world projects that demonstrate modern web development patterns.\"\r\n        }\r\n        // {\r\n        //     \"title\": \"Freelance Web Developer\",\r\n        //     \"organization\": \"Remote Projects\",\r\n        //     \"startYear\": 2025,\r\n        //     \"endYear\": null,\r\n        //     \"description\": \"Built and deployed responsive websites for small businesses and personal portfolios using Next.js and Tailwind CSS.\"\r\n        // }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/about",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get about",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Overview",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		}
+	]
+}
